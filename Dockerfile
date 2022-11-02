@@ -1,4 +1,7 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:14-alpine
+RUN mkdir app
+WORKDIR /app
+COPY /target/tpAchatProject-1.0.jar tpAchatProject-1.0.jar  
 EXPOSE 8089
-ADD target/tpAchatProject-0.0.4-SNAPSHOT.jar tpAchatProject-0.0.4-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/tpAchatProject-0.0.4-SNAPSHOT.jar"]
+RUN chmod 777 tpAchatProject-1.0.jar 
+CMD ["java","-jar","tpAchatProject-1.0.jar"]
