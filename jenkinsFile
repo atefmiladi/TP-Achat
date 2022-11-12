@@ -83,11 +83,14 @@ pipeline {
         stage("Docker-Compose") {
           steps {
               sh 'docker-compose up -d'
-             }
-       
-       
+             }   
        } 
-      
-       
+
+       stage("Slack Notification"){  
+            steps{
+                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'pipeline execution finished ', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
+            }
+        }
+        
      }
 }
