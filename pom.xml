@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpAchatProject</artifactId>
-	<version>1.0</version>
+	<version>1.2</version>
 	<name>tpAchatProject</name>
 	<description>tpAchatProject</description>
 	<properties>
@@ -57,6 +57,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+   <groupId>org.codehaus.sonar.plugins</groupId>
+   <artifactId>sonar-jacoco-plugin</artifactId>
+   <version>3.2.1</version>
+</dependency>
+		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
@@ -78,11 +83,17 @@
             <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-maven-plugin</artifactId>
           </plugin>
+      
 			<plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>
     <version>3.1.0</version>
 </plugin>  
+    <plugin>
+  <groupId>org.jacoco</groupId>
+  <artifactId>jacoco-maven-plugin</artifactId>
+  <version>0.7.2-SNAPSHOT</version>
+</plugin>
 		</plugins>
 	</build>
 	
