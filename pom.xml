@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		
 	</properties>
 	<dependencies>
 		<dependency>
@@ -82,6 +83,11 @@
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>
     <version>3.1.0</version>
+    <plugin>
+  <groupId>org.jacoco</groupId>
+  <artifactId>jacoco-maven-plugin</artifactId>
+  <version>0.8.9-SNAPSHOT</version>
+</plugin>
 </plugin>  
 		</plugins>
 	</build>
