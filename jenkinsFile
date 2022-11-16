@@ -5,7 +5,7 @@ pipeline {
         stage ("Git Checkout"){
             steps{
             git branch: 'atef-branch', 
-            url: 'https://github.com/atefmiladi/TP-Achat.git'
+            url: 'git'
             }
         
         }

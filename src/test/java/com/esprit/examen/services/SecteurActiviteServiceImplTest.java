@@ -49,8 +49,8 @@ public class SecteurActiviteServiceImplTest {
         sec.setLibelleSecteurActivite("secteur 2");
         secteurActiviteService.addSecteurActivite(sec);
         log.info("secteur ajouter avec success");
-        sec.setCodeSecteurActivite("SEC5");
-        sec.setLibelleSecteurActivite("secteur 5");
+        sec.setCodeSecteurActivite("SEC3");
+        sec.setLibelleSecteurActivite("secteur 3");
         SecteurActivite x = secteurActiviteService.updateSecteurActivite(sec);
         assertNotNull(x.getCodeSecteurActivite());
         assertNotNull(x.getLibelleSecteurActivite());
@@ -59,7 +59,7 @@ public class SecteurActiviteServiceImplTest {
     
     @Test
     @Order(3)
-    public void testRetrieveAllCategorie() throws ParseException {
+    public void testRetrieveAllSecteurActivite() throws ParseException {
         List<SecteurActivite> listSecteur = secteurActiviteService.retrieveAllSecteurActivite();
         Assertions.assertNotEquals(0, listSecteur.size());
         log.info("Nombre : " + listSecteur.size()+" \n");
@@ -72,10 +72,26 @@ public class SecteurActiviteServiceImplTest {
     @Order(4)
     public void testDeleteSecteurActivite() throws ParseException {
         SecteurActivite sec = new SecteurActivite();
-        sec.setCodeSecteurActivite("SEC1");
-        sec.setLibelleSecteurActivite("secteur 1");
+        sec.setCodeSecteurActivite("SEC4");
+        sec.setLibelleSecteurActivite("secteur 4");
         secteurActiviteService.addSecteurActivite(sec);
         secteurActiviteService.deleteSecteurActivite(sec.getIdSecteurActivite());
         log.info("secteur supprimer avec success");
     }
+    
+    
+    @Test
+    @Order(5)
+    public void testRetrieveSecteurActivite() throws ParseException {
+        SecteurActivite sec = new SecteurActivite();
+        sec.setCodeSecteurActivite("SEC5");
+        sec.setLibelleSecteurActivite("secteur 5");
+        secteurActiviteService.addSecteurActivite(sec);
+        secteurActiviteService.retrieveSecteurActivite(sec.getIdSecteurActivite());
+        log.info("secteur retrieved avec success");
+    }
+    
+    
+    
+    
 }

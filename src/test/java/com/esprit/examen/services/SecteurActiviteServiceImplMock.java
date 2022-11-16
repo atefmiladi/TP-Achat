@@ -1,7 +1,9 @@
 package com.esprit.examen.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -41,6 +43,7 @@ public class SecteurActiviteServiceImplMock {
         assertEquals(sec, secteurActiviteServiceImpl.addSecteurActivite(sec));
     }
     
+    
     @Test
     @Order(2)
     public void getSecteursTest() {
@@ -61,5 +64,34 @@ public class SecteurActiviteServiceImplMock {
         secteurActiviteServiceImpl.deleteSecteurActivite(sec.getIdSecteurActivite());
         log.info("secteur supprimer avec success");
     }
+    
+    
+    
+    @Test
+    @Order(4)
+    public void testRetrieveSecteurActivite() throws ParseException {
+        SecteurActivite sec = new SecteurActivite("SEC5","secteur 5");
+        Mockito.when(secteurActiviteRepository.save(sec)).thenReturn(sec);
+        assertEquals(sec, secteurActiviteServiceImpl.addSecteurActivite(sec));
+        log.info("secteur ajouter avec success");
+        SecteurActivite secteur = secteurActiviteServiceImpl.retrieveSecteurActivite(sec.getIdSecteurActivite());
+        log.info("secteur retrieved avec success:"+secteur);
+    }
+    
+    
+    @Test
+    @Order(5)
+    public void testModifierSecteurActivite() throws ParseException {
+        SecteurActivite sec = new SecteurActivite("SEC6","secteur 6");
+        Mockito.when(secteurActiviteRepository.save(sec)).thenReturn(sec);
+        assertEquals(sec, secteurActiviteServiceImpl.addSecteurActivite(sec));;
+        log.info("secteur ajouter avec success");
+        SecteurActivite secteur = secteurActiviteServiceImpl.updateSecteurActivite(new SecteurActivite("SEC7","secteur 7"));
+        log.info("secteur modifier avec success:"+secteur);
+    }
+    
+    
+    
+    
 
 }
