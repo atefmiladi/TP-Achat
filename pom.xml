@@ -87,7 +87,7 @@
     <repository>
       <id>deploymentRepo</id>
       <name>Nexus Repository</name>
-      <url>http://vps-a133f95c.vps.ovh.net:8081/repository/maven-releases/</url>
+      <url>http://vps-a133f95c.vps.ovh.net:8081/repository/maven-snapshots/</url>
     </repository>
  </distributionManagement>
 
