@@ -51,7 +51,7 @@ public class CategorieServiceImplMock {
 	@Test
 	@Order(1)
 	public void saveCategorieTest() {
-		CategorieProduit cat = new CategorieProduit("cat1", "categorie 1");
+		CategorieProduit cat = new CategorieProduit("cat6", "categorie 6");
 		Mockito.when(categorieProduitRepository.save(cat)).thenReturn(cat);
 		assertEquals(cat, categorieProduitServiceImpl.addCategorieProduit(cat));
 	}

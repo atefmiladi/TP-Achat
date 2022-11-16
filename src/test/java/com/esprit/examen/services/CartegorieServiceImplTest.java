@@ -36,8 +36,8 @@ public class CartegorieServiceImplTest {
 	@Order(1)
 	public void testAddCategorie() throws ParseException {
 		CategorieProduit cat = new CategorieProduit();
-		cat.setCodeCategorie("CAT1");
-		cat.setLibelleCategorie("categorie 1");
+		cat.setCodeCategorie("CAT3");
+		cat.setLibelleCategorie("categorie 3");
 		CategorieProduit x = categorieProduitService.addCategorieProduit(cat);
 		assertNotNull(x.getCodeCategorie());
 		assertNotNull(x.getLibelleCategorie());
