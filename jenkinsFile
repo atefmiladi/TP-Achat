@@ -62,7 +62,7 @@ pipeline {
         stage("Build our Image") {
           steps {
           
-              sh 'docker build -t msoloz/spring:$BUILD_NUMBER .'
+              sh 'docker build -t msoloz/projetachat:$BUILD_NUMBER .'
               
              }
        }
@@ -73,7 +73,7 @@ pipeline {
                     
                     withCredentials([string(credentialsId: 'DockerId', variable: 'Docker')]) {
                         sh 'docker login -u msoloz -p ${Docker}'
-                        sh 'docker image push msoloz/spring:$BUILD_NUMBER'
+                        sh 'docker image push msoloz/projetachat:$BUILD_NUMBER'
                 }
             } 
             }
