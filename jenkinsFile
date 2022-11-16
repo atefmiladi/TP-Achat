@@ -5,7 +5,7 @@ pipeline {
         stage ("Git Checkout"){
             steps{
             git branch: 'atef-branch', 
-            url: 'git'
+            url: 'https://github.com/atefmiladi/TP-Achat.git'
             }
         
         }
@@ -93,4 +93,16 @@ pipeline {
         }
         
      }
+     post{
+        success{
+            
+              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'Validation - Build - Success', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
+          
+        }
+        failure{
+            
+              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'Validation - Build - Failed', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
+           
+        }
+    }
 }
