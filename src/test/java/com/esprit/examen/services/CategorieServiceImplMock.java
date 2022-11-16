@@ -76,4 +76,28 @@ public class CategorieServiceImplMock {
 		categorieProduitServiceImpl.deleteCategorieProduit(cat.getIdCategorieProduit());
 		log.info("categorie supprimer avec success");
 	}
+	@Test
+	@Order(4)
+	public void deleteCategorierTest() {
+		CategorieProduit cat = new CategorieProduit("cat4", "categorie 4");
+		assertNotNull(cat.getCodeCategorie());
+		assertNotNull(cat.getLibelleCategorie());
+		categorieProduitServiceImpl.deleteCategorieProduit(cat.getIdCategorieProduit());
+		verify(categorieProduitRepository, times(1)).deleteById(cat.getIdCategorieProduit());
+		log.info("categorie supprimer avec success");
+	}
+	
+	@Test
+	@Order(5)
+	public void deleteAllCategorierTest() {
+		Mockito.when(categorieProduitRepository.findAll()).thenReturn(Stream
+				.of(new CategorieProduit("cat2", "categorie 2"), new CategorieProduit("cat2", "categorie 3")).collect(Collectors.toList()));
+		assertEquals(2, categorieProduitServiceImpl.retrieveAllCategorieProduits().size());
+		List<CategorieProduit> listCategorie = categorieProduitServiceImpl.retrieveAllCategorieProduits();
+		log.info("==>size:"+listCategorie.size());
+		for(int i=0;i<listCategorie.size();i++){
+			categorieProduitServiceImpl.deleteCategorieProduit(listCategorie.get(i).getIdCategorieProduit());;
+			log.info("==> categorie "+listCategorie.get(i).getLibelleCategorie()+" deleted successfulyy ");
+		}
+	}
 }

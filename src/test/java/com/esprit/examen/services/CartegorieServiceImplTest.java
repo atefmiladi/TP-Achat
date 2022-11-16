@@ -81,6 +81,28 @@ public class CartegorieServiceImplTest {
 		categorieProduitService.deleteCategorieProduit(cat.getIdCategorieProduit());
 		log.info("categorie supprimer avec success");
 	}
-	
+	@Test
+	@Order(5)
+	public void testFindAndDeleteByIdCategorie() throws ParseException {
+		/*List<CategorieProduit> listCategorie = categorieProduitService.retrieveAllCategorieProduits();
+		Assertions.assertNotEquals(0, listCategorie.size());
+		log.info("Nombre categorie: " + listCategorie.size()+" \n");
+		for(int i=0;i<listCategorie.size();i++){
+			categorieProduitService.deleteCategorieProduit(listCategorie.get(i).getIdCategorieProduit());
+			log.info("==>"+listCategorie.get(i).getLibelleCategorie()+" delete successfully");
+		}*/
+		CategorieProduit cat = new CategorieProduit();
+		cat.setCodeCategorie("CAT D");
+		cat.setLibelleCategorie("categorieD");
+		assertNotNull(cat.getCodeCategorie());
+		assertNotNull(cat.getLibelleCategorie());
+		CategorieProduit x = categorieProduitService.addCategorieProduit(cat);
+		CategorieProduit catD = categorieProduitService.retrieveCategorieProduit(x.getIdCategorieProduit());
+		assertNotNull(catD.getCodeCategorie());
+		assertNotNull(catD.getLibelleCategorie());
+		long id= catD.getIdCategorieProduit();
+		categorieProduitService.deleteCategorieProduit(catD.getIdCategorieProduit());
+		log.info("categorie id : "+id+" deleted successfuly");
+	}
 	
 }
