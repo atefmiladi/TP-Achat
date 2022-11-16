@@ -25,7 +25,6 @@ import com.esprit.examen.repositories.SecteurActiviteRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 public class SecteurActiviteServiceImplMock {
