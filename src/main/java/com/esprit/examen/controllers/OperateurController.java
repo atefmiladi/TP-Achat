@@ -55,5 +55,7 @@ public class OperateurController {
 		return operateurService.updateOperateur(operateur);
 	}
 
+	}
+
 	
-}
+
