@@ -69,8 +69,8 @@ pipeline {
             steps { 
                 script {
                      withCredentials([string(credentialsId: 'dockerID', variable: 'Docker')]) {
-                        sh 'docker login -u 06990737 -p ${Docker}'
-                        sh 'docker image push 06990737/spring:$BUILD_NUMBER'
+                        sh 'docker login -u alaaouitidocker -p ${Docker}'
+                        sh 'docker image push alaaouitidocker/spring:$BUILD_NUMBER'
                 } 
             }
             
