@@ -44,6 +44,9 @@ public class FactureServiceImplTest {
 		
 	    
 		FactureService.addFacture(f);
+		assertNotNull(f.getMontantFacture());
+        assertNotNull(f.getMontantRemise());
+		
 		log.info("facture ajouter avec success");
 	}
 	
@@ -88,6 +91,9 @@ public class FactureServiceImplTest {
 			
 			FactureService.addFacture(cat);
 			FactureService.cancelFacture(cat.getIdFacture());
+			
+			assertNotNull(cat.getMontantFacture());
+	        assertNotNull(cat.getMontantRemise());
 			log.info("Facture supprimer avec success");
 		}
 }
