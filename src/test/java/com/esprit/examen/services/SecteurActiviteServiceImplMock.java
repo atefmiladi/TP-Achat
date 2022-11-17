@@ -60,6 +60,8 @@ public class SecteurActiviteServiceImplMock {
     @Order(3)
     public void deleteSecteurActiviteTest() {
         SecteurActivite sec = new SecteurActivite("SEC4", "secteur 4");
+        assertNotNull(sec.getCodeSecteurActivite());
+        assertNotNull(sec.getLibelleSecteurActivite());
         secteurActiviteServiceImpl.deleteSecteurActivite(sec.getIdSecteurActivite());
         log.info("secteur supprimer avec success");
     }
