@@ -51,23 +51,23 @@ pipeline {
             }
         }
         
-         stage("Publish to Nexus") {
+        /* stage("Publish to Nexus") {
              steps {
         sh 'mvn deploy'
       }
     
-    }
+    }*/
         
     
-        stage("Build our Image") {
+        /*stage("Build our Image") {
           steps {
           
               sh 'docker build -t msoloz/projetachat:$BUILD_NUMBER .'
               
              }
-       }
+       }*/
        
-       stage("Push to DockerHub") { 
+       /*stage("Push to DockerHub") { 
             steps { 
                 script {
                     
@@ -78,13 +78,13 @@ pipeline {
             } 
             }
             
-        }
+        }*/
         
-        stage("Docker-Compose") {
+       /* stage("Docker-Compose") {
           steps {
               sh 'docker-compose up -d'
              }   
-       } 
+       } */
 
        stage("Slack Notification"){  
             steps{

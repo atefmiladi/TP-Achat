@@ -1,13 +1,21 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.ManyToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.services.ISecteurActiviteService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.annotations.Api;
+import lombok.Getter;
+import lombok.Setter;
 
 @RestController
 @Api(tags = "Gestion des secteurs activites")
@@ -36,8 +44,13 @@ public class SecteurActiviteController {
 	// http://localhost:8089/SpringMVC/secteurActivite/add-secteurActivite
 	@PostMapping("/add-secteurActivite")
 	@ResponseBody
-	public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
-		return  secteurActiviteService.addSecteurActivite(sa);
+	public SecteurActivite addSecteurActivite(@RequestBody SecteurActiviteModel secteurActiviteModel) {
+	    
+	    SecteurActivite sec = new SecteurActivite();
+	    sec.setCodeSecteurActivite(secteurActiviteModel.getCodeSecteurActivite());
+	    sec.setLibelleSecteurActivite(secteurActiviteModel.getLibelleSecteurActivite());
+	    secteurActiviteService.addSecteurActivite(sec);
+        return secteurActiviteService.addSecteurActivite(sec);
 		
 	}
 
@@ -51,9 +64,25 @@ public class SecteurActiviteController {
 	// http://localhost:8089/SpringMVC/secteurActivite/modify-secteurActivite
 	@PutMapping("/modify-secteurActivite")
 	@ResponseBody
-	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActivite secteurActivite) {
-		return secteurActiviteService.updateSecteurActivite(secteurActivite);
+	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActiviteModel secteurActiviteModel) {
+		return secteurActiviteService.updateSecteurActivite(new SecteurActivite(secteurActiviteModel.getIdSecteurActivite(),secteurActiviteModel.getCodeSecteurActivite(),
+		        secteurActiviteModel.getLibelleSecteurActivite(),secteurActiviteModel.getFournisseurs()));
 	}
 
 	
+}
+
+@Getter
+@Setter
+class SecteurActiviteModel {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private Long idSecteurActivite;
+    private String codeSecteurActivite;
+    private String libelleSecteurActivite;
+    @ManyToMany(mappedBy="secteurActivites")
+    @JsonIgnore
+    private Set<Fournisseur> fournisseurs;
 }
