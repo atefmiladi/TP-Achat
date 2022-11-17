@@ -36,8 +36,8 @@ public class CartegorieServiceImplTest {
 	@Order(1)
 	public void testAddCategorie() throws ParseException {
 		CategorieProduit cat = new CategorieProduit();
-		cat.setCodeCategorie("CAT3");
-		cat.setLibelleCategorie("categorie 3");
+		cat.setCodeCategorie("CAT8");
+		cat.setLibelleCategorie("categorie 8");
 		CategorieProduit x = categorieProduitService.addCategorieProduit(cat);
 		assertNotNull(x.getCodeCategorie());
 		assertNotNull(x.getLibelleCategorie());
@@ -48,12 +48,12 @@ public class CartegorieServiceImplTest {
 	@Order(2)
 	public void testModifierCategorie() throws ParseException {
 		CategorieProduit cat = new CategorieProduit();
-		cat.setCodeCategorie("CAT2");
+		cat.setCodeCategorie("CAT8");
 		cat.setLibelleCategorie("categorie 2");
 		categorieProduitService.addCategorieProduit(cat);
 		log.info("categorie ajouter avec success");
-		cat.setCodeCategorie("CAT5");
-		cat.setLibelleCategorie("categorie 5");
+		cat.setCodeCategorie("CAT6");
+		cat.setLibelleCategorie("categorie 6");
 		CategorieProduit x = categorieProduitService.updateCategorieProduit(cat);
 		assertNotNull(x.getCodeCategorie());
 		assertNotNull(x.getLibelleCategorie());
@@ -75,7 +75,7 @@ public class CartegorieServiceImplTest {
 	@Order(4)
 	public void testDeleteCategorie() throws ParseException {
 		CategorieProduit cat = new CategorieProduit();
-		cat.setCodeCategorie("CAT2");
+		cat.setCodeCategorie("CAT8");
 		cat.setLibelleCategorie("categorie");
 		categorieProduitService.addCategorieProduit(cat);
 		categorieProduitService.deleteCategorieProduit(cat.getIdCategorieProduit());
