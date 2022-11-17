@@ -1,0 +1,89 @@
+pipeline {
+    agent any
+    
+  
+    stages {
+        stage ("Git Checkout"){
+            steps{
+            git branch: 'ala-branch', 
+            url: 'https://github.com/atefmiladi/TP-Achat.git'
+            }
+        
+        }
+        
+        stage('Maven Clean') {
+            steps {
+                echo "Cleaning Project"
+                sh 'mvn clean'
+            }
+        }
+        
+        stage('Maven Build') {
+            steps {
+                echo "Building Project"
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('Unit Test') {
+            steps {
+                echo "Testing Project"
+                sh 'mvn compile validate test'
+            }
+        }
+        
+        stage('Sonarqube Test') {
+            steps {
+                echo "Sonarqube Testing "
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Pcoverage'
+            }
+        }
+        
+        stage('Create Package') {
+            steps {
+                echo "Creating Package"
+                sh 'mvn package'
+            }
+        }
+        
+         stage("Publish to Nexus") {
+             steps {
+            
+            sh 'mvn deploy'
+        
+        }
+       
+       
+        
+        }
+        stage("Build our Image") {
+          steps {
+          
+              sh 'docker build -t 06990737/spring:$BUILD_NUMBER .'
+              
+             }
+       }
+       
+       
+       stage("Push to DockerHub") { 
+            steps { 
+                script {
+                     withCredentials([string(credentialsId: 'dockerID', variable: 'Docker')]) {
+                        sh 'docker login -u 06990737 -p ${Docker}'
+                        sh 'docker image push 06990737/spring:$BUILD_NUMBER'
+                } 
+            }
+            
+        }
+        }
+        
+        stage("Docker-Compose") {
+          steps {
+              sh 'docker-compose up'
+             }
+       
+       
+       } 
+       
+    }
+}
