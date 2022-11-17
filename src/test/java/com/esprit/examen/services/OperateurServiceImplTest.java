@@ -62,7 +62,7 @@ public class OperateurServiceImplTest {
 	public void testDeleteOperateur() throws ParseException {
 		Operateur P = new Operateur();
 		
-		P.setIdOperateur((long) 93);
+		P.setIdOperateur((long) 94);
 		P.setNom("dhiaa");
 		P.setPrenom("mejrii");
 		P.setPassword("abcdfe");
