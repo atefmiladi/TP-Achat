@@ -59,7 +59,7 @@ pipeline {
         stage("Build our Image") {
           steps {
           
-              sh 'docker build -t 06990737/spring:$BUILD_NUMBER .'
+              sh 'docker build -t alaaouitidocker/spring:$BUILD_NUMBER .'
               
              }
        }
