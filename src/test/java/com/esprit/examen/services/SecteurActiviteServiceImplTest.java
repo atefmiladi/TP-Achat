@@ -74,6 +74,8 @@ public class SecteurActiviteServiceImplTest {
         SecteurActivite sec = new SecteurActivite();
         sec.setCodeSecteurActivite("SEC4");
         sec.setLibelleSecteurActivite("secteur 4");
+        assertNotNull(sec.getIdSecteurActivite());
+        assertNotNull(sec.getLibelleSecteurActivite());
         secteurActiviteService.addSecteurActivite(sec);
         secteurActiviteService.deleteSecteurActivite(sec.getIdSecteurActivite());
         log.info("secteur supprimer avec success");
@@ -86,6 +88,8 @@ public class SecteurActiviteServiceImplTest {
         SecteurActivite sec = new SecteurActivite();
         sec.setCodeSecteurActivite("SEC5");
         sec.setLibelleSecteurActivite("secteur 5");
+        assertNotNull(sec.getIdSecteurActivite());
+        assertNotNull(sec.getLibelleSecteurActivite());
         secteurActiviteService.addSecteurActivite(sec);
         secteurActiviteService.retrieveSecteurActivite(sec.getIdSecteurActivite());
         log.info("secteur retrieved avec success");
