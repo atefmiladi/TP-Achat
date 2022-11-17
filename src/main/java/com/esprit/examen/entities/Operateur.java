@@ -26,7 +26,7 @@ public class Operateur implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idOperateur;
+	private long idOperateur;
 	private String nom;
 	private String prenom;
 	
@@ -34,5 +34,20 @@ public class Operateur implements Serializable{
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
+	public long getIdOperateur() {
+		return idOperateur;
+	}
+	public Operateur(long idOperateur, String nom, String prenom, String password) {
+		super();
+		this.idOperateur = idOperateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+	}
 	
-}
+	}
+	
+	
+	
+	
+
