@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage ("Git Checkout"){
             steps{
-            git branch: 'main', 
-            url: 'https://github.com/Dhia-dev/TP-achat-test-java.git'
+            git branch: 'Dhia-branch', 
+            url: 'https://github.com/atefmiladi/TP-Achat.git'
             }
         
         }
