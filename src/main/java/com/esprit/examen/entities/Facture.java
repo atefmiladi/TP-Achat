@@ -27,7 +27,7 @@ public class Facture implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idFacture;
+	private long idFacture;
 	private float montantRemise;
 	private float montantFacture;
 	@Temporal(TemporalType.DATE)
@@ -43,6 +43,13 @@ public class Facture implements Serializable {
     @OneToMany(mappedBy="facture")
     @JsonIgnore
     private Set<Reglement> reglements;
+	
+    
+    public Facture(float montantRemise, float montantFacture) {
+		super();
+		this.montantRemise = montantRemise;
+		this.montantFacture = montantFacture;
+	}
 
 	
 }
