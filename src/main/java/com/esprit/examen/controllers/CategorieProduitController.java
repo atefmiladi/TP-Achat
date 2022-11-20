@@ -68,8 +68,12 @@ public class CategorieProduitController {
 
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduitModel categorieProduitModel) {
+	    
+        CategorieProduit cat = new CategorieProduit();
+        cat.setCodeCategorie(categorieProduitModel.getCodeCategorie());
+        cat.setLibelleCategorie(categorieProduitModel.getLibelleCategorie());
+		return categorieProduitService.updateCategorieProduit(cat);
 	}
 
 	
