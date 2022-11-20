@@ -1,5 +1,14 @@
 pipeline {
     agent any
+
+
+    environment{
+        
+      SLACK_MESSAGE_SUCCESS = "SUCCESS: Job '${env.JOB_NAME}' with build number '${env.BUILD_NUMBER}'\nWanna check it! (${env.BUILD_URL}) for git commit '${env.GIT_COMMIT}' in git branch '${env.GIT_BRANCH}'for the project '${env.GIT_URL}'"
+      SLACK_MESSAGE_FAILURE = "FAILURE: Job '${env.JOB_NAME}' with build number '${env.BUILD_NUMBER}'\nBetter fix it! (${env.BUILD_URL})"
+
+    }
+    
     
     stages {
         stage ("Git Checkout"){
@@ -85,23 +94,17 @@ pipeline {
               sh 'docker-compose up -d'
              }   
        } 
-
-       stage("Slack Notification"){  
-            steps{
-                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'pipeline execution finished ', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
-            }
-        }
         
      }
      post{
         success{
             
-              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'Validation - Build - Success', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
+              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message:env.SLACK_MESSAGE_SUCCESS , tokenCredentialId: 'SlackId', username: 'jenkins-bot'
           
         }
         failure{
             
-              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message: 'Validation - Build - Failed', tokenCredentialId: 'SlackId', username: 'jenkins-bot'
+              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'everything', message:env.SLACK_MESSAGE_FAILURE, tokenCredentialId: 'SlackId', username: 'jenkins-bot'
            
         }
     }
