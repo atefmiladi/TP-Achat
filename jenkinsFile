@@ -5,7 +5,7 @@ pipeline {
     environment{
         
       SLACK_MESSAGE_SUCCESS = "SUCCESS: Job '${env.JOB_NAME}' with build number '${env.BUILD_NUMBER}'\nWanna check it! (${env.BUILD_URL}) for git commit '${env.GIT_COMMIT}' in git branch '${env.GIT_BRANCH}'for the project '${env.GIT_URL}'"
-      SLACK_MESSAGE_FAILURE = "FAILURE: Job '${env.JOB_NAME}' with build number '${env.BUILD_NUMBER}'\nBetter fix it! (${env.BUILD_URL})"
+      SLACK_MESSAGE_FAILURE = "FAILURE: Job '${env.JOB_NAME}' with build number '${env.BUILD_NUMBER}'\nBetter fix it! (${env.BUILD_URL}) for git commit '${env.GIT_COMMIT}' in git branch '${env.GIT_BRANCH}'for the project '${env.GIT_URL}'"
 
     }
     
