@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +33,8 @@ public class Operateur implements Serializable{
 	private String prenom;
 	
 	private String password;
-	@OneToMany
+	@Autowired(required = false)
+    @OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
 	

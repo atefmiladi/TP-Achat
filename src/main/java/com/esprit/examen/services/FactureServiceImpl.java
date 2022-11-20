@@ -1,18 +1,14 @@
 package com.esprit.examen.services;
 
 import java.util.Date;
+
 import java.util.List;
-import java.util.Set;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
-import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.Operateur;
-import com.esprit.examen.entities.Produit;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import com.esprit.examen.repositories.FactureRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
@@ -71,9 +67,10 @@ public class FactureServiceImpl implements IFactureService {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
 		return (List<Facture>) fournisseur.getFactures();
 	}
-
+    
+	
 	@Override
-	public void assignOperateurToFacture(@Nullable Long idOperateur,@Nullable Long idFacture) {
+	public void assignOperateurToFacture(Long idOperateur,Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
 		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
 		operateur.getFactures().add(facture);
@@ -84,8 +81,8 @@ public class FactureServiceImpl implements IFactureService {
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
 		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
 		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
-		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
-		return pourcentage;
+		return (totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
+		
 	}
 	
 
