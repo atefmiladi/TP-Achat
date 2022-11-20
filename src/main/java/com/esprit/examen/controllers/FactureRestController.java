@@ -1,10 +1,9 @@
 package com.esprit.examen.controllers;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -18,7 +17,6 @@ import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.Reglement;
-import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.services.IFactureService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
