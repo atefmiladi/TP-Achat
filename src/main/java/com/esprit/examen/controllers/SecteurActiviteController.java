@@ -1,6 +1,7 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
+
 import java.util.Set;
 
 import javax.persistence.ManyToMany;
@@ -78,7 +79,7 @@ class SecteurActiviteModel {
     /**
      * 
      */
-    private static final long serialVersionUID = 1L;
+   
     private Long idSecteurActivite;
     private String codeSecteurActivite;
     private String libelleSecteurActivite;
