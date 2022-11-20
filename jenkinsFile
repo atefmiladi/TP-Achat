@@ -33,7 +33,7 @@ pipeline {
             }
         }
         
-        stage('Unit Test') {
+        stage('Unit And Mock Test') {
             steps {
                 echo "Testing Project"
                 sh 'mvn compile validate test'
@@ -68,7 +68,7 @@ pipeline {
     }
         
     
-       /* stage("Build our Image") {
+        stage("Build our Image") {
           steps {
           
               sh 'docker build -t msoloz/projetachat:$BUILD_NUMBER .'
@@ -93,7 +93,7 @@ pipeline {
           steps {
               sh 'docker-compose up -d'
              }   
-       } */
+       } 
         
      }
      post{
