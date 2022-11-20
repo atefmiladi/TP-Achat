@@ -30,8 +30,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Transactional
 	public Produit addProduit(Produit p) {
-		produitRepository.save(p);
-		return p;
+		return produitRepository.save(p);	
 	}
 
 	
@@ -57,7 +56,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public void assignProduitToStock(Long idProduit, Long idStock) {
 		Produit produit = produitRepository.findById(idProduit).orElse(null);
 		Stock stock = stockRepository.findById(idStock).orElse(null);
-		stock.getProduits().add(produit);
+		produit.setStock(stock);
 		produitRepository.save(produit);
 
 	}

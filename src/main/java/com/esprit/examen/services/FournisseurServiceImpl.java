@@ -1,6 +1,7 @@
 package com.esprit.examen.services;
 
 import java.util.Date;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,10 +15,9 @@ import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
 import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Service
-@Slf4j
 public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Autowired
@@ -31,11 +31,8 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
-		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepository.findAll();
-		for (Fournisseur fournisseur : fournisseurs) {
-			log.info(" fournisseur : " + fournisseur);
-		}
-		return fournisseurs;
+		return fournisseurRepository.findAll();
+		
 	}
 
 
@@ -70,10 +67,12 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	@Override
 	public Fournisseur retrieveFournisseur(Long fournisseurId) {
 
-		Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).orElse(null);
-		return fournisseur;
+		return fournisseurRepository.findById(fournisseurId).orElse(null);
+		
 	}
-
+    
+	
+	@Transactional
 	@Override
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
