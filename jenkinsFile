@@ -33,7 +33,7 @@ pipeline {
             }
         }
         
-        stage('Unit And Mock Test') {
+        stage('Unit Test') {
             steps {
                 echo "Testing Project"
                 sh 'mvn compile validate test'
